@@ -28,17 +28,17 @@ mysql> delete from tbCustomerInfoBkup where custInfoDOB='7/9/1987';
 ```
 mysql> alter table tbCustomerInfoBkup modify custInfoDOB year;
 ```
-## create index on the table primary key (it's unique) column for better searching.
+### create index on the table primary key (it's unique) column for better searching.
  <!---Indexes are used to find rows with specific column values quickly. Without an index, MySQL must begin with the first row and then read through the entire table to find the relevant rows. The larger the table, the more this costs. If the table has an index for the columns in question, MySQL can quickly determine the position to seek to in the middle of the data file without having to look at all the data. This is much faster than reading every row sequentially.
 -->
 ```
 mysql> create index indexCustInfoID on tbCustomerDBInfo (custID);
 ```
-## remove data but leave schema
+### remove data but leave schema
 ```
 truncate table tbCustomerInfoBkup;
 ```
-## auto increment
+### auto increment
 ```
 create table tbEmpInfo(empID int PRIMARY KEY AUTO_INCREMENT,empLastName varchar(20),empSSN varchar(11));
 
@@ -74,7 +74,7 @@ mysql> select * from tbEmpInfo;
 +-------+-------------+------------+
 2 rows in set (0.00 sec)
 ```
-## on the table tbCustomerDBInfo change Field custID from varchar to integer and use the consraint AUTO_INCREMENT
+### on the table tbCustomerDBInfo change Field custID from varchar to integer and use the consraint AUTO_INCREMENT
 ```
 mysql> show fields from tbCustomerDBInfo;
 +------------------+-------------+------+-----+---------+-------+
@@ -112,7 +112,7 @@ mysql> show fields from tbCustomerDBInfo;
 +------------------+-------------+------+-----+---------+----------------+
 9 rows in set (0.01 sec)
 ```
- ### functions - Count - how many records do I have?
+### functions - Count - how many records do I have?
 
 mysql> select count(*) from tbCustomerInfo;
 +----------+
@@ -303,7 +303,7 @@ mysql> select * from myView;
 mysql> 
 ```
 ### joins, selecting two or more rows from different tables based on some common field.
-### Lets do a join(INNER) from two tables
+### lets do a join(INNER) from two tables
 ```
 mysql> select * from tbCustomerDBInfo;
 +--------+--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
@@ -342,27 +342,9 @@ mysql> SELECT tbEmpInfo.custInfoCriminalRecord, tbCustomerDBInfo.custInfoName, t
 ```
 FROM tbEmpInfo(LEFT TABLE) INNER JOIN tbCustomerDBInfo(RIGT TABLE)
 ```
-### WHAT TO JOIN --- SELECT TABLES TO JOIN ---- JOIN ON THE FIELD THAT I INDICATE Bewegnung Männer
+### WHAT TO JOIN --- SELECT TABLES TO JOIN ---- JOIN ON THE FIELD THAT I INDICATE
+
 ### right join, left join full outer join!!!!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
