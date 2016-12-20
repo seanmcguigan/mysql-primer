@@ -1,30 +1,30 @@
-### mysql-primer
+## mysql-primer
 
-## create table
+### create table
 ```
 mysql> create table tbFootBallScores (home varchar(15),away varchar(15));
 ```
-## select from table
+### select from table
 ```
 mysql> select custInfoName from tbCustomerInfoBkup where custInfoCityName like 'Belfast';
 ```
-## add column
+### add column
 ```
 mysql> alter table tbCustomerInfoBkup add custInfoDOB varchar(10);
 ```
-## Add data to that column
+### add data to that column
 ```
 update tbEmpInfo set custNumFingers = '41' where empID=10;
 ```
-## add data
+### add data
 ```
 mysql> insert into tbCustomerInfoBkup (custInfoName,custInfoLastName,custInfoAddr1,custInfoAddr2,custInfoCityName,custInfoCounty,custInfoPostcode,custInfoPhone) values ('Gwen','Matlock','33 Ball Row','','Leeds','CD','LE12 2BF','07734876497');
 ```
-## delete row identify by data value
+### delete row identify by data value
 ```
 mysql> delete from tbCustomerInfoBkup where custInfoDOB='7/9/1987';
 ```
-## change column type from varchar to year
+### change column type from varchar to year
 ```
 mysql> alter table tbCustomerInfoBkup modify custInfoDOB year;
 ```
@@ -112,8 +112,7 @@ mysql> show fields from tbCustomerDBInfo;
 +------------------+-------------+------+-----+---------+----------------+
 9 rows in set (0.01 sec)
 ```
-# functions
-# Count how many records do I have
+ ### functions - Count - how many records do I have?
 
 mysql> select count(*) from tbCustomerInfo;
 +----------+
@@ -123,8 +122,8 @@ mysql> select count(*) from tbCustomerInfo;
 +----------+
 1 row in set (0.00 sec)
 
-#show me users with the same last name
-
+### show me how many users have the same last name
+```
 mysql> select * from tbCustomerInfo;
 +--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
 | custInfoName | custInfoLastName | custInfoAddr1 | custInfoAddr2 | custInfoCityName | custInfoCounty | custInfoPostcode | custInfoPhone |
@@ -142,9 +141,9 @@ mysql> select count(distinct custInfoLastName) from tbCustomerInfo;
 |                                2 |
 +----------------------------------+
 1 row in set (0.00 sec)
-
-#select like
-
+```
+### select like
+```
 mysql> select * from tbCustomerInfo where custInfoLastName='Austin';
 +--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
 | custInfoName | custInfoLastName | custInfoAddr1 | custInfoAddr2 | custInfoCityName | custInfoCounty | custInfoPostcode | custInfoPhone |
@@ -153,9 +152,9 @@ mysql> select * from tbCustomerInfo where custInfoLastName='Austin';
 | Mary         | Austin           | 5 nut row     |               | Lincon           | LN             | LN52 2BF         | 07730746497   |
 +--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
 2 rows in set (0.00 sec)
-
-# find customer last names that begin with A (% == wildcard, _ == any single charachter)
-
+```
+### find customer last names that begin with A (% == wildcard, _ == any single charachter)
+```
 mysql> select * from tbCustomerInfo where custInfoLastName like 'A%';
 +--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
 | custInfoName | custInfoLastName | custInfoAddr1 | custInfoAddr2 | custInfoCityName | custInfoCounty | custInfoPostcode | custInfoPhone |
@@ -164,9 +163,9 @@ mysql> select * from tbCustomerInfo where custInfoLastName like 'A%';
 | Mary         | Austin           | 5 nut row     |               | Lincon           | LN             | LN52 2BF         | 07730746497   |
 +--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
 2 rows in set (0.00 sec)
-
-# combine with count HOW MANY records exist where the last name begins with A
-
+```
+### combine with count HOW MANY records exist where the last name begins with A
+```
 mysql> select count(*) from tbCustomerInfo where custInfoLastName like 'A%';~
 +----------+
 | count(*) |
@@ -202,10 +201,9 @@ mysql> show fields from tbEmpInfo;
 | empSSN      | varchar(11) | YES  |     | NULL    |                |
 +-------------+-------------+------+-----+---------+----------------+
 3 rows in set (0.00 sec)
-
-
-# count how many custumers are called Bush
-
+```
+### count how many custumers are called Bush
+```
 mysql> select count(*) from tbEmpInfo where empLastName like '%bush%';
 +----------+
 | count(*) |
@@ -213,9 +211,9 @@ mysql> select count(*) from tbEmpInfo where empLastName like '%bush%';
 |        2 |name like
 +----------+
 1 row in set (0.00 sec)
-
-# get me the aveage number of fingers, and sum total of fingers, and count the occurence of, anyone in tbEmpInfo that has the last name Bush. 
-
+```
+### get me the aveage number of fingers, and sum total of fingers, and count the occurence of, anyone in tbEmpInfo that has # the last name Bush. 
+```
 mysql> select AVG(custNumFingers),SUM(custNumFingers),COUNT(*) FROM tbEmpInfo WHERE empLastName LIKE '%bush%';
 +---------------------+---------------------+----------+
 | AVG(custNumFingers) | SUM(custNumFingers) | COUNT(*) |
@@ -223,10 +221,9 @@ mysql> select AVG(custNumFingers),SUM(custNumFingers),COUNT(*) FROM tbEmpInfo WH
 |             22.0000 |                  44 |        2 |
 +---------------------+---------------------+----------+
 1 row in set (0.00 sec)
-
-
-# and for people whose name begins with m
-
+```
+### and for people whose name begins with m
+```
 mysql> select AVG(custNumFingers),SUM(custNumFingers),COUNT(*) FROM tbEmpInfo WHERE empLastName LIKE 'm%';
 +---------------------+---------------------+----------+
 | AVG(custNumFingers) | SUM(custNumFingers) | COUNT(*) |
@@ -234,10 +231,10 @@ mysql> select AVG(custNumFingers),SUM(custNumFingers),COUNT(*) FROM tbEmpInfo WH
 |             38.6667 |                 116 |        3 |
 +---------------------+---------------------+----------+
 1 row in set (0.00 sec)
-
-# With their name 
-# Disable ONLY_FULL_GROUP_BY, mysql> set sql_mode = ''
-
+```
+### With their name 
+### Disable ONLY_FULL_GROUP_BY, mysql> set sql_mode = ''
+```
 mysql> select empLastName,AVG(custNumFingers),SUM(custNumFingers),COUNT(*) FROM tbEmpInfo WHERE empLastName LIKE '%bush%';
 +-------------+---------------------+---------------------+----------+
 | empLastName | AVG(custNumFingers) | SUM(custNumFingers) | COUNT(*) |
@@ -245,24 +242,23 @@ mysql> select empLastName,AVG(custNumFingers),SUM(custNumFingers),COUNT(*) FROM 
 | Bush        |             22.0000 |                  44 |        2 |
 +-------------+---------------------+---------------------+----------+
 1 row in set (0.00 sec)
-
-# stored proceedure
-
+```
+### stored proceedure
+```
  DELIMITER //
  CREATE PROCEDURE GetAllProducts()
    BEGIN
    SELECT *  FROM products;
    END //
  DELIMITER ;
-
-# call the procedure
-
+```
+### call the procedure
+```
 CALL STORED_PROCEDURE_NAME();
-
-
-# view, run only when data changes, as opposed to running in a loop(pool v push)
-# lets create a view, which effectivly creates a table
-
+```
+### view, run only when data changes, as opposed to running in a loop(pool v push)
+### lets create a view, which effectivly creates a table
+```
 mysql> select * from tbEmpInfo;
 +-------+-------------+-------------+----------------+-------------+------------------------+
 | empID | empLastName | empSSN      | custNumFingers | custInfoSex | custInfoCriminalRecord |
@@ -280,10 +276,8 @@ mysql> select * from tbEmpInfo;
 +-------+-------------+-------------+----------------+-------------+------------------------+
 10 rows in set (0.00 sec)
 
-
 mysql> CREATE VIEW myView AS SELECT COUNT(*),AVG(custNumFingers),SUM(custNumFingers) FROM tbEmpInfo WHERE custNumFingers > 50;
 Query OK, 0 rows affected (0.00 sec
-
 
 mysql> show tables;
 +--------------------------+
@@ -307,11 +301,10 @@ mysql> select * from myView;
 1 row in set (0.00 sec)
 
 mysql> 
-
-# joins, selecting two or more rows from different tables based on some common field.
-
-# Lets do a join(INNER) from two tables
-
+```
+### joins, selecting two or more rows from different tables based on some common field.
+### Lets do a join(INNER) from two tables
+```
 mysql> select * from tbCustomerDBInfo;
 +--------+--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
 | custID | custInfoName | custInfoLastName | custInfoAddr1 | custInfoAddr2 | custInfoCityName | custInfoCounty | custInfoPostcode | custInfoPhone |
@@ -344,14 +337,13 @@ mysql> SELECT tbEmpInfo.custInfoCriminalRecord, tbCustomerDBInfo.custInfoName, t
 | yes                    | James        | Male        |
 | no                     | Janice       | Female      |
 +------------------------+--------------+-------------+
-
-this snippet matches the ID's in both tables up. tbEmpInfo.empID=tbCustomerDBInfo.custID; where the empID matches the custID
-
+```
+### this snippet matches the ID's in both tables up. tbEmpInfo.empID=tbCustomerDBInfo.custID; where the empID matches the custID
+```
 FROM tbEmpInfo(LEFT TABLE) INNER JOIN tbCustomerDBInfo(RIGT TABLE)
-
-WHAT TO JOIN --- SELECT TABLES TO JOIN ---- JOIN ON THE FIELD THAT I INDICATE Bewegnung Männer
-
-# right join, left join full outer join!!!!
+```
+### WHAT TO JOIN --- SELECT TABLES TO JOIN ---- JOIN ON THE FIELD THAT I INDICATE Bewegnung Männer
+### right join, left join full outer join!!!!
 
 
 
