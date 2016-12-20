@@ -112,8 +112,8 @@ mysql> show fields from tbCustomerDBInfo;
 +------------------+-------------+------+-----+---------+----------------+
 9 rows in set (0.01 sec)
 ```
-### functions - Count - how many records do I have?
-
+### functions, Count, how many records do I have?
+```
 mysql> select count(*) from tbCustomerInfo;
 +----------+
 | count(*) |
@@ -121,7 +121,7 @@ mysql> select count(*) from tbCustomerInfo;
 |        2 |
 +----------+
 1 row in set (0.00 sec)
-
+```
 ### show me how many users have the same last name
 ```
 mysql> select * from tbCustomerInfo;
