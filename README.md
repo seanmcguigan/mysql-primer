@@ -342,7 +342,7 @@ mysql> SELECT tbEmpInfo.custInfoCriminalRecord, tbCustomerDBInfo.custInfoName, t
 ```
 FROM tbEmpInfo(LEFT TABLE) INNER JOIN tbCustomerDBInfo(RIGT TABLE)
 ```
-### WHAT TO JOIN --- SELECT TABLES TO JOIN ---- JOIN ON THE FIELD THAT I INDICATE
+#### WHAT TO JOIN --- SELECT TABLES TO JOIN ---- JOIN ON THE FIELD THAT I INDICATE
 
 ### Union
 ```
