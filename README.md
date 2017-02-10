@@ -344,7 +344,23 @@ FROM tbEmpInfo(LEFT TABLE) INNER JOIN tbCustomerDBInfo(RIGT TABLE)
 ```
 ### WHAT TO JOIN --- SELECT TABLES TO JOIN ---- JOIN ON THE FIELD THAT I INDICATE
 
-### right join, left join full outer join!!!!
+### Union
+```
+mysql> select * from tbCustomerDBInfo order by custInfoName ASC limit 3;
++--------+--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
+| custID | custInfoName | custInfoLastName | custInfoAddr1 | custInfoAddr2 | custInfoCityName | custInfoCounty | custInfoPostcode | custInfoPhone |
++--------+--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
+|      2 | James        | Cook             | NULL          | NULL          | London           | NULL           | NULL             | NULL          |
+|      3 | Janice       | Gandolfino       | NULL          | NULL          | London           | NULL           | NULL             | NULL          |
+|      1 | Sean         | McGuigan         | NULL          | NULL          | London           | NULL           | NULL             | NULL          |
++--------+--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
 
+mysql> select * from tbCustomerDBInfo order by custInfoName DESC limit 3;
++--------+--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
+| custID | custInfoName | custInfoLastName | custInfoAddr1 | custInfoAddr2 | custInfoCityName | custInfoCounty | custInfoPostcode | custInfoPhone |
++--------+--------------+------------------+---------------+---------------+------------------+----------------+------------------+---------------+
+|      1 | Sean         | McGuigan         | NULL          | NULL          | London           | NULL           | NULL             | NULL          |
+|      3 | Janice       | Gandolfino       | NULL          | NULL          | London           | NULL           | NULL             | NULL          |
+|      2 | James        | Cook             | NULL          | NULL          | London           | NULL           | NULL             | NULL          |
 
-
+```
