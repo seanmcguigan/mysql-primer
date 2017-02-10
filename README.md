@@ -256,7 +256,7 @@ mysql> select empLastName,AVG(custNumFingers),SUM(custNumFingers),COUNT(*) FROM 
 ```
 CALL STORED_PROCEDURE_NAME();
 ```
-### view, run only when data changes, as opposed to running in a loop(pool v push)
+### view, run only when data changes, as opposed to running in a loop(poll v push)
 ### lets create a view, which effectivly creates a table
 ```
 mysql> select * from tbEmpInfo;
