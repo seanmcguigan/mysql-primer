@@ -12,7 +12,7 @@ mysql> select custInfoName from tbCustomerInfoBkup where custInfoCityName like '
 ```
 mysql> alter table tbCustomerInfoBkup add custInfoDOB varchar(10);
 ```
-### add data to that column
+### update data for column
 ```
 update tbEmpInfo set custNumFingers = '41' where empID=10;
 ```
@@ -20,6 +20,11 @@ update tbEmpInfo set custNumFingers = '41' where empID=10;
 ```
 mysql> insert into tbCustomerInfoBkup (custInfoName,custInfoLastName,custInfoAddr1,custInfoAddr2,custInfoCityName,custInfoCounty,custInfoPostcode,custInfoPhone) values ('Gwen','Matlock','33 Ball Row','','Leeds','CD','LE12 2BF','07734876497');
 ```
+### update data for column
+```
+update ssh_keys set ssh_key='new_value' where username='warp'; 
+```
+
 ### delete row identify by data value
 ```
 mysql> delete from tbCustomerInfoBkup where custInfoDOB='7/9/1987';
